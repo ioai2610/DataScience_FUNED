@@ -2013,7 +2013,8 @@ for n in range(0,5,1):
 
 print('')
 print('')
-#evaluaremos los productos mejores resenados
+
+#evaluaremos los productos mejores resenados repitiendo los procesos anteriores
 print('Los 5 productos mejores resenados son: ')
 
 print('')
@@ -2034,7 +2035,8 @@ for n in range(-1,-6,-1):
 
 print('')
 print('')
-#evaluaremos los 5 productos peores resenados
+
+#evaluaremos los 5 productos peores resenados de la misma manera
 print('Los 5 productos peores resenados son: ')
 
 print('')
@@ -2069,8 +2071,6 @@ print('El total de ingresos menuales es el siguiente: ')
 
 print('')
 
-meses=['/01/','/02/','/03/','/04/','/05/','/06/','/07/','/08/','/09/','/10/','/11/','/12']
-
 Enero=[]
 Febrero=[]
 Marzo=[]
@@ -2084,9 +2084,13 @@ Octubre=[]
 Noviembre=[]
 Diciembre=[]
 
+#generamos una lista de meses que nos ayude a generar una iteracion mas adelante
+meses=[Enero,Febrero,Marzo,Abril,Mayo,Junio,Julio,Agosto,Septiembre,Octubre,Noviembre,Diciembre]
+
+#ponemos las condiciones para clasificar el numero de ventas por mes
 for n in lifestore_sales:
   if '/01/' in n[3]:
-    Enero.append([n[1],0,0])
+    Enero.append([n[1],0])
   elif '/02/' in n[3]:
     Febrero.append([n[1],0])
   elif '/03/' in n[3]:
@@ -2110,13 +2114,195 @@ for n in lifestore_sales:
   elif '/12/' in n[3]:
     Diciembre.append([n[1],0])
 
-Tabla_precios=[]
-#for n in range(len(lifestore_products)):
- # renglon_precios=[n+1,0]
-  #Tabla_precios.append(renglon_precios)
+Tabla_precios=[] #hacemos una tabla de los precios por ID de producto
+for n in lifestore_products:
+  renglon_precios=[n[0],n[2]] #identificamos los precios al ID
+  Tabla_precios.append(renglon_precios) #los agregamos a la tabla
 
-#for precio in range(len(lifestore_products)):
-  #id_product=precio[2]
-  #Tabla_precios[id_product-1][1]+=1
 
-#print(Tabla_precios)
+for l in meses: #recorremos todos los meses
+  for j in l: #la lista dentro de cada uno de ellos
+    for k in Tabla_precios:
+      if j[0]==k[0]: #si los ID coinciden, se procede a agregar el precio del producto a la tabla del mes correspondiente
+        j[1]=k[1]
+    
+Total_anual=[] #generamos una lista para los ingresos anuales
+
+suma_Enero=0 #ponemos un contador desde cero para el mes inicial
+for m in Enero:
+  suma_Enero+=m[1] #sumamos todos los precios en la lista
+promedio_Enero=suma_Enero/len(Enero) #evaluamos el promedio mensual
+
+print('El promedio de ventas en Enero es de: ')
+print(promedio_Enero)
+Total_anual.append(promedio_Enero) #agregamos el promedio a la lista anual
+
+print('')
+
+#repetimos los procesos para los siguientes meses
+suma_Febrero=0
+for m in Febrero:
+  suma_Febrero+=m[1]
+promedio_Febrero=suma_Febrero/len(Febrero)
+
+print('El promedio de ventas en Febrero es de: ')
+print(promedio_Febrero)
+Total_anual.append(promedio_Febrero)
+
+print('')
+
+suma_Marzo=0
+for m in Marzo:
+  suma_Marzo+=m[1]
+promedio_Marzo=suma_Marzo/len(Marzo)
+
+print('El promedio de ventas en Marzo es de: ')
+print(promedio_Marzo)
+Total_anual.append(promedio_Marzo)
+
+print('')
+
+suma_Abril=0
+for m in Abril:
+  suma_Abril+=m[1]
+promedio_Abril=suma_Abril/len(Abril)
+
+print('El promedio de ventas en Abril es de: ')
+print(promedio_Abril)
+Total_anual.append(promedio_Abril)
+
+print('')
+
+suma_Mayo=0
+for m in Mayo:
+  suma_Mayo+=m[1]
+promedio_Mayo=suma_Mayo/len(Mayo)
+
+print('El promedio de ventas en Mayo es de: ')
+print(promedio_Mayo)
+Total_anual.append(promedio_Mayo)
+
+print('')
+
+suma_Junio=0
+for m in Junio:
+  suma_Junio+=m[1]
+promedio_Junio=suma_Junio/len(Junio)
+
+print('El promedio de ventas en Junio es de: ')
+print(promedio_Junio)
+Total_anual.append(promedio_Junio)
+
+print('')
+
+suma_Julio=0
+for m in Julio:
+  suma_Julio+=m[1]
+promedio_Julio=suma_Julio/len(Julio)
+
+print('El promedio de ventas en Julio es de: ')
+print(promedio_Julio)
+Total_anual.append(promedio_Julio)
+
+print('')
+
+suma_Agosto=0
+for m in Agosto:
+  suma_Agosto+=m[1]
+promedio_Agosto=suma_Agosto/len(Agosto)
+
+print('El promedio de ventas en Agosto es de: ')
+print(promedio_Agosto)
+Total_anual.append(promedio_Agosto)
+
+print('')
+
+suma_Septiembre=0
+for m in Septiembre:
+  suma_Septiembre+=m[1]
+promedio_Septiembre=suma_Septiembre/len(Septiembre)
+
+print('El promedio de ventas en Septiembre es de: ')
+print(promedio_Septiembre)
+Total_anual.append(promedio_Septiembre)
+
+print('')
+
+suma_Octubre=0
+for m in Octubre:
+  suma_Octubre+=m[1]
+
+if len(Octubre)==0: #en este caso no hay ventas en Octubre, esta condicion puede agregarse en forma general 
+  print('No hubo ventas para Octubre ')
+  promedio_Octubre=0
+else:
+  promedio_Octubre=suma_Octubre/len(Octubre)
+  print(len(Octubre))
+Total_anual.append(promedio_Octubre)
+
+print('')
+
+suma_Noviembre=0
+for m in Noviembre:
+  suma_Noviembre+=m[1]
+promedio_Noviembre=suma_Noviembre/len(Noviembre)
+
+print('El promedio de ventas en Noviembre es de: ')
+print(promedio_Noviembre)
+Total_anual.append(promedio_Noviembre)
+
+print('')
+
+suma_Diciembre=0
+for m in Diciembre:
+  suma_Diciembre+=m[1]
+
+if len(Diciembre)==0:
+  print('No hubo ventas para Diciembre ')
+  promedio_Diciembre=0
+else:
+  promedio_Diciembre=suma_Diciembre/len(Diciembre)
+  print(len(Diciembre))
+Total_anual.append(promedio_Diciembre)
+
+suma_anual=0 #iniciamos la suma anual
+for n in Total_anual:
+  suma_anual+=n 
+
+promedio_anual=suma_anual/len(meses) #hacemos el promedio anual
+
+print('')
+
+print('El promedio anual de ventas es de: ')
+print(promedio_anual)
+
+print('')
+
+print('Las ventas para Enero son: ')
+print(len(Enero))
+print('Las ventas para Febrero son: ')
+print(len(Febrero))
+print('Las ventas para Marzo son: ')
+print(len(Marzo))
+print('Las ventas para Abril son: ')
+print(len(Abril))
+print('Las ventas para Mayo son: ')
+print(len(Mayo))
+print('Las ventas para Junio son: ')
+print(len(Junio))
+print('Las ventas para Julio son: ')
+print(len(Julio))
+print('Las ventas para Agosto son: ')
+print(len(Agosto))
+print('Las ventas para Septiembre son: ')
+print(len(Septiembre))
+print('Las ventas para Octubre son: ')
+print(len(Octubre))
+print('Las ventas para Noviembre son: ')
+print(len(Noviembre))
+print('Las ventas para Diciembre son: ')
+print(len(Diciembre))
+
+print('')
+
+print('¡Tenga muy buen dia!')
